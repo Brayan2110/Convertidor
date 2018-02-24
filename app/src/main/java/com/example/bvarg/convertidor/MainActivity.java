@@ -9,6 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import devazt.devazt.networking.HttpClient;
+import devazt.devazt.networking.OnHttpRequestComplete;
+import devazt.devazt.networking.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -18,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView Total;
     EditText Cantidad;
     Boolean Moneda = true;
+    float Cambio = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +48,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Colon.setOnClickListener(this);
         Dolar.setOnClickListener(this);
         Dolar.setChecked(true);
+
+        HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+                if(status.isSuccess()){
+                    Gson gson = new GsonBuilder().create();
+                    try{
+                        JSONObject jsono = new JSONObject(status.getResult());
+                        String res = jsono.getString("rates");
+                        Resultado r = gson.fromJson(res, Resultado.class);
+                        Cambio = Float.parseFloat(r.getCRC());
+                        //Total.setText(String.valueOf(Cambio));
+                        //JSONArray jsonarray = jsono.getJSONArray("license");
+//                        ArrayList<Resultado> lista = new ArrayList<Resultado>();
+//                        for(int i=0; i<jsonarray.length(); i++){
+//                            //String res = jsonarray.getString(i);
+//                            System.out.println(res);
+//                            Resultado r = gson.fromJson(res, Resultado.class);
+//                            lista.add(r);
+//                            System.err.println(r.getCRC());
+//                            Total.setText(r.getCRC());
+//                        }
+                    }
+                    catch (Exception e){
+
+                    }
+                    //Toast.makeText(MainActivity.this, status.getResult(), Toast.LENGTH_SHORT).show();
+                }
+                else{
+
+                }
+
+            }
+        });
+        cliente.excecute("https://openexchangerates.org/api/latest.json?app_id=ddb0898d8d1148a495691ba9ad1d4c9f");
 
     }
 
