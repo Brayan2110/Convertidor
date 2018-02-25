@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">Convertidor</string>
+
+    <string-array name="Moneda">
+        <item>Dírham de los Emiratos Árabes Unidos</item>
+        <item>Florín antillano neerlandés</item>
+        <item>Peso Argentino</item>
+        <item>Dólar australiano</item>
+        <item>Boliviano</item>
+        <item>Real brasileño</item>
+        <item>Dólar beliceño</item>
+        <item>Dólar canadiense</item>
+        <item>Peso Chileno</item>
+        <item>Yuan Chino</item>
+        <item>Peso Colombiano</item>
+        <item>Colón costarricense</item>
+        <item>Peso Cubano</item>
+        <item>Euro</item>
+        <item>Quetzal Guatemala</item>
+        <item>Dólar de Hong Kong</item>
+        <item>Lempira de Honduras</item>
+        <item>Kuna croata</item>
+        <item>Dólar jamaiquino</item>
+        <item>Yen Japon</item>
+        <item>Won norcoreano</item>
+        <item>Won surcoreano</item>
+        <item>Peso mexicano</item>
+        <item>Córdoba nicaragüense</item>
+        <item>Dólar neozelandés</item>
+        <item>Balboa Panama</item>
+        <item>Sol Peru</item>
+        <item>Guarani Paraguay</item>
+        <item>Rublo ruso</item>
+        <item>Dólar de Singapur</item>
+        <item>Colón de Salvador</item>
+        <item>Dólar trinitense</item>
+        <item>Peso uruguayo</item>
+        <item>Bolívar de Venezuela</item>
+        <item>Rand sudafricano</item>
+        <item>Dolar Estadounidense</item>
+    </string-array>
 </resources>
